@@ -1,0 +1,44 @@
+﻿@model net_il_mio_fotoalbum.Models.PhotoFormModel
+
+<h2>Edit</h2>
+
+<form asp-action="Update" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Photo.Id" />
+
+    <div class="form-group">
+        <label asp-for="Photo.Title" class="control-label"></label>
+        <input asp-for="Photo.Title" class="form-control" />
+        <span asp-validation-for="Photo.Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Photo.Description" class="control-label"></label>
+        <textarea asp-for="Photo.Description" class="form-control"></textarea>
+        <span asp-validation-for="Photo.Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+            <strong>Visibility:</strong>
+            <select asp-for="Photo.Visibility">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+
+        </div>
+
+    <div class="form-group">
+        <label asp-for="SelectedCategories" class="control-label">Categories</label>
+        <select asp-for="SelectedCategories" asp-items="Model.Categories" class="form-control" multiple></select>
+        <span asp-validation-for="SelectedCategories" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ImageFile" class="control-label"></label>
+        <input type="file" name="ImageFile" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>

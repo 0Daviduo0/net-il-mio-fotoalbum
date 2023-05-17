@@ -1,0 +1,42 @@
+﻿@model PhotoFormModel
+
+<h2>Details</h2>
+
+<div>
+    <h4>Photo</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Id</dt>
+        <dd class="col-sm-10">@Model.Photo.Id</dd>
+
+        <dt class="col-sm-2">Title</dt>
+        <dd class="col-sm-10">@Model.Photo.Title</dd>
+
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10">@Model.Photo.Description</dd>
+
+        <dt class="col-sm-2">Visibility</dt>
+        <dd class="col-sm-10">@Model.Photo.Visibility</dd>
+    </dl>
+</div>
+
+<div>
+    <h4>Image</h4>
+    <hr />
+    <img src="data:image;base64,@Model.Image" alt="">
+</div>
+
+<div>
+    <h4>Categories</h4>
+    <hr />
+    <ul>
+        @foreach (var category in Model.Photo.Categories)
+        {
+            <li>@category.Name</li>
+        }
+    </ul>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

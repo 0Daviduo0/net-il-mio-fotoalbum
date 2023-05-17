@@ -1,0 +1,27 @@
+﻿@model PhotoFormModel
+
+<ul class="container flex-wrap">
+    @{
+        int i = 0;
+    }
+    @foreach(Photo photo in Model.ListPhotos)
+    {
+        
+            <li class="card">
+                <a href="@Url.Action("Details", "Photo", new{id=@photo.Id})"
+                   style="text-decoration: none; color: black;">
+                <img src="data:image;base64,@Model.ListImages[i]" alt="photo" />
+                    <div class="card-body">
+                        <h5 class="card-title">@photo.Title</h5>
+                    </div>
+                </a>
+                <a href="@Url.Action("Update", "Photo", new {Id = photo.Id})">Modifica</a>
+                <form asp-controller="Photo" asp-action="Delete" asp-route-id="@photo.Id" method="post">
+                    @Html.AntiForgeryToken()
+                    <button type="submit">Elimina</button>
+                </form>
+ 
+            </li>
+        i++;
+    }
+</ul>
